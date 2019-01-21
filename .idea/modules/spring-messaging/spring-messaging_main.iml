@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id=":spring-messaging:main" external.linked.project.path="$MODULE_DIR$/../../../spring-messaging" external.root.project.path="$MODULE_DIR$/../../.." external.system.id="GRADLE" external.system.module.group="org.springframework" external.system.module.type="sourceSet" external.system.module.version="5.1.2.BUILD-SNAPSHOT" type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="kotlin-language" name="Kotlin">
+      <configuration version="3" platform="JVM 1.8" useProjectSettings="false">
+        <compilerSettings>
+          <option name="additionalArguments" value="-Xjsr305=strict" />
+        </compilerSettings>
+        <compilerArguments>
+          <option name="destination" value="$MODULE_DIR$/../../../spring-messaging/build/classes/kotlin/main" />
+          <option name="classpath" value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.2/25ea2e8b0c338a877313bd4672d3fe056ea78f0d/jsr305-3.0.2.jar:/Users/jesse/.gradle/caches/modules-2/files-2.1/io.projectreactor.netty/reactor-netty/0.8.5.BUILD-SNAPSHOT/f886a179062644ee710592e3553e20e48e585440/reactor-netty-0.8.5.BUILD-SNAPSHOT.jar:/Users/jesse/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.9.7/e6faad47abd3179666e89068485a1b88a195ceb7/jackson-databind-2.9.7.jar:/Users/jesse/.gradle/caches/modules-2/files-2.1/javax.xml.bind/jaxb-api/2.3.0/99f802e0cb3e953ba3d6e698795c4aeb98d37c48/jaxb-api-2.3.0.jar:/Users/jesse/.gradle/caches/modules-2/files-2.1/io.netty/netty-codec-http2/4.1.30.Final/2da92f518409904954d3e8dcc42eb6a562a70302/netty-codec-http2-4.1.30.Final.jar:/Users/jesse/.gradle/caches/modules-2/files-2.1/io.netty/netty-handler-proxy/4.1.30.Final/1baa1568fa936caddca0fae96fdf127fd5cbad16/netty-handler-proxy-4.1.30.Final.jar:/Users/jesse/.gradle/caches/modules-2/files-2.1/io.netty/netty-codec-http/4.1.30.Final/1384c630e8a0eeef33ad12a28791dce6e1d8767c/netty-codec-http-4.1.30.Final.jar:/Users/jesse/.gradle/caches/modules-2/files-2.1/io.netty/netty-handler/4.1.30.Final/ecc076332ed103411347f4806a44ee32d9d9cb5f/netty-handler-4.1.30.Final.jar:/Users/jesse/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-epoll/4.1.30.Final/aef2d431b9e8eb767020d10cfb5a2fae7e0c0312/netty-transport-native-epoll-4.1.30.Final-linux-x86_64.jar:/Users/jesse/.gradle/caches/modules-2/files-2.1/io.projectreactor/reactor-core/3.2.6.BUILD-SNAPSHOT/5b0b0c295fc70508ccf0d1b7b938eec2ce54bae9/reactor-core-3.2.6.BUILD-SNAPSHOT.jar:/Users/jesse/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.9.0/7c10d545325e3a6e72e06381afe469fd40eb701/jackson-annotations-2.9.0.jar:/Users/jesse/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.9.7/4b7f0e0dc527fab032e9800ed231080fdc3ac015/jackson-core-2.9.7.jar:/Users/jesse/.gradle/caches/modules-2/files-2.1/io.netty/netty-codec-socks/4.1.30.Final/ea272e3bb281d3a91d27278f47e61b4de285cc27/netty-codec-socks-4.1.30.Final.jar:/Users/jesse/.gradle/caches/modules-2/files-2.1/io.netty/netty-codec/4.1.30.Final/515c8f609aaca28a94f984d89a9667dd3359c1b1/netty-codec-4.1.30.Final.jar:/Users/jesse/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport-native-unix-common/4.1.30.Final/200ecb0e07b67b94f51bd597b0c9a11394481e55/netty-transport-native-unix-common-4.1.30.Final.jar:/Users/jesse/.gradle/caches/modules-2/files-2.1/io.netty/netty-transport/4.1.30.Final/3d27bb432a3b125167ac161b26415ad29ec17f02/netty-transport-4.1.30.Final.jar:/Users/jesse/.gradle/caches/modules-2/files-2.1/io.netty/netty-buffer/4.1.30.Final/597adb653306470fb3ec1af3c0f3f30a37b1310a/netty-buffer-4.1.30.Final.jar:/Users/jesse/.gradle/caches/modules-2/files-2.1/io.netty/netty-resolver/4.1.30.Final/5106fd687066ffd712e5295d32af4e2ac6482613/netty-resolver-4.1.30.Final.jar:/Users/jesse/.gradle/caches/modules-2/files-2.1/io.netty/netty-common/4.1.30.Final/5dca0c34d8f38af51a2398614e81888f51cf811a/netty-common-4.1.30.Final.jar:/Users/jesse/.gradle/caches/modules-2/files-2.1/org.reactivestreams/reactive-streams/1.0.2/323964c36556eb0e6209f65c1cef72b53b461ab8/reactive-streams-1.0.2.jar" />
+          <option name="noStdlib" value="true" />
+          <option name="noReflect" value="true" />
+          <option name="moduleName" value="spring-messaging" />
+          <option name="jvmTarget" value="1.8" />
+          <option name="addCompilerBuiltIns" value="true" />
+          <option name="loadBuiltInsFromDependencies" value="true" />
+          <option name="languageVersion" value="1.1" />
+          <option name="apiVersion" value="1.1" />
+          <option name="pluginOptions">
+            <array />
+          </option>
+          <option name="pluginClasspaths">
+            <array>
+              <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-compiler-embeddable/1.2.70/d3d4eff2bb498aa7ec30d9e267bb9781aedbc441/kotlin-scripting-compiler-embeddable-1.2.70.jar" />
+            </array>
+          </option>
+        </compilerArguments>
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
+    <output url="file://$MODULE_DIR$/../../../spring-messaging/out/production/classes" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../../spring-messaging/src/main">
+      <sourceFolder url="file://$MODULE_DIR$/../../../spring-messaging/src/main/java" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="spring-context_main" scope="PROVIDED" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-transport:4.1.30.Final" level="project" />
+    <orderEntry type="module" module-name="spring-context_main" />
+    <orderEntry type="library" name="Gradle: io.projectreactor:reactor-core:3.2.6.BUILD-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-buffer:4.1.30.Final" level="project" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-handler-proxy:4.1.30.Final" level="project" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-codec-http2:4.1.30.Final" level="project" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-codec-http:4.1.30.Final" level="project" />
+    <orderEntry type="module" module-name="spring-aop_main" scope="PROVIDED" />
+    <orderEntry type="module" module-name="spring-oxm_main" />
+    <orderEntry type="module" module-name="spring-expression_main" scope="PROVIDED" />
+    <orderEntry type="library" name="Gradle: io.projectreactor.netty:reactor-netty:0.8.5.BUILD-SNAPSHOT" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../spring-core/build/libs/spring-objenesis-repack-3.0.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module" module-name="spring-beans_main" />
+    <orderEntry type="module" module-name="spring-oxm_main" scope="PROVIDED" />
+    <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-databind:2.9.7" level="project" />
+    <orderEntry type="module" module-name="spring-aop_main" />
+    <orderEntry type="module" module-name="spring-expression_main" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-transport-native-epoll:linux-x86_64:4.1.30.Final" level="project" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-codec:4.1.30.Final" level="project" />
+    <orderEntry type="module" module-name="spring-core_main" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../spring-core/build/libs/spring-cglib-repack-3.2.8.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module" module-name="spring-jcl_main" />
+    <orderEntry type="library" name="Gradle: javax.xml.bind:jaxb-api:2.3.0" level="project" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-handler:4.1.30.Final" level="project" />
+    <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-annotations:2.9.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-core:2.9.7" level="project" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-codec-socks:4.1.30.Final" level="project" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-transport-native-unix-common:4.1.30.Final" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: com.google.code.findbugs:jsr305:3.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-resolver:4.1.30.Final" level="project" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-common:4.1.30.Final" level="project" />
+    <orderEntry type="library" name="Gradle: org.reactivestreams:reactive-streams:1.0.2" level="project" />
+  </component>
+</module>
