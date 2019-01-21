@@ -3,7 +3,7 @@
     <property name="created">2019-01-21T11:13:16</property>
     <property name="ide">idea</property>
     <property name="ideVersion">2018.2.2.0.0</property>
-    <property name="modified">2019-01-21T17:21:39</property>
+    <property name="modified">2019-01-21T17:34:03</property>
     <property name="originalScheme">Darcula</property>
   </metaInfo>
   <colors>
@@ -19,7 +19,7 @@
     </option>
     <option name="IDENTIFIER_UNDER_CARET_ATTRIBUTES">
       <value>
-        <option name="FOREGROUND" value="3c3f41" />
+        <option name="FOREGROUND" value="539abe" />
         <option name="BACKGROUND" value="e0a819" />
         <option name="ERROR_STRIPE_COLOR" value="36b13" />
         <option name="EFFECT_TYPE" value="1" />
