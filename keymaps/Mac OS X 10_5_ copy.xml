@@ -15,4 +15,7 @@
   <action id="NewFile">
     <keyboard-shortcut first-keystroke="ctrl alt f" />
   </action>
+  <action id="SelectInProjectView">
+    <keyboard-shortcut first-keystroke="meta f4" />
+  </action>
 </keymap>
