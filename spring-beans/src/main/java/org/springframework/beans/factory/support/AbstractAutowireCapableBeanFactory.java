@@ -598,9 +598,10 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 		boolean earlySingletonExposure = (mbd.isSingleton() && this.allowCircularReferences &&
 				isSingletonCurrentlyInCreation(beanName));
 		if (earlySingletonExposure) {
-			        /*
-        ！！！这里很重要，把构造成功，但属性还没注入的
-        的bean加到singletonFactory中，这样再解决A的依赖
+		/*
+        ！！！！！！！！！！！！！！！！！！！！！！！！！
+        这里很重要，把构造成功，但属性还没注入的的bean
+        加到singletonFactory中，这样再解决A的依赖
         过程中如果依赖A，就把这个半成品返回回去。
         */
 			if (logger.isTraceEnabled()) {

@@ -241,6 +241,16 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 	 * @throws BeansException if the bean could not be created
 	 */
 	//todo : 触发依赖注入功能的地方
+
+	/**
+	 * @param name 要获取 bean 的名字
+	 * @param requiredType 要获取 bean 的类型
+	 * @param args 创建 bean 时传递的参数。这个参数仅限于创建 bean 时使用
+	 * @param typeCheckOnly 是否为类型检查
+	 * @param <T>
+	 * @return
+	 * @throws BeansException
+	 */
 	//真正实现向IOC容器获取Bean的功能，也是触发依赖注入功能的地方
 	@SuppressWarnings("unchecked")
 	protected <T> T doGetBean(final String name, @Nullable final Class<T> requiredType,
@@ -256,7 +266,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 		final String beanName = transformedBeanName(name);
 		Object bean;
 
-		/***
+		/***2.
 		 * 尝试从缓存中获取实例
 		 * 如果获取到实例,还要委托getObjectForBeanInstance解决FactoryBean的场景,就是调用getObject
 		 */
@@ -272,8 +282,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 				//如果指定名称的Bean在容器中已有单例模式的Bean被创建
 				//直接返回已经创建的Bean
 				if (isSingletonCurrentlyInCreation(beanName)) {
-					logger.trace("Returning eagerly cached instance of singleton bean '" + beanName +
-							"' that is not fully initialized yet - a consequence of a circular reference");
+					logger.trace("Returning eagerly cached instance of singleton bean '" + beanName + "' that is not fully initialized yet - a consequence of a circular reference");
 				}
 				else {
 					logger.trace("Returning cached instance of singleton bean '" + beanName + "'");
@@ -1740,6 +1749,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 			Object beanInstance, String name, String beanName, @Nullable RootBeanDefinition mbd) {
 
 		// Don't let calling code try to dereference the factory if the bean isn't a factory.
+        // 若为工厂类引用（name 以 & 开头）
 		if (BeanFactoryUtils.isFactoryDereference(name)) {
 			if (beanInstance instanceof NullBean) {
 				return beanInstance;
@@ -1752,19 +1762,25 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 		// Now we have the bean instance, which may be a normal bean or a FactoryBean.
 		// If it's a FactoryBean, we use it to create a bean instance, unless the
 		// caller actually wants a reference to the factory.
+        // 到这里我们就有了一个 bean 实例，当然该实例可能是会是是一个正常的 bean 又或者是一个 FactoryBean
+        // 如果是 FactoryBean，我们则创建该 bean
 		if (!(beanInstance instanceof FactoryBean) || BeanFactoryUtils.isFactoryDereference(name)) {
 			return beanInstance;
 		}
 
 		Object object = null;
 		if (mbd == null) {
+            //试着从缓存里面获取bean
 			object = getCachedObjectForFactoryBean(beanName);
 		}
 		if (object == null) {
 			// Return bean instance from factory.
+            //明确beanInstance是FactoryBean类型
 			FactoryBean<?> factory = (FactoryBean<?>) beanInstance;
 			// Caches object obtained from FactoryBean if it is a singleton.
+            //containsBeanDefinition检测beanDefinitionMap中是否包含已经检测的beanName
 			if (mbd == null && containsBeanDefinition(beanName)) {
+			    //将GernericBeanDefinition转换为RootBeanDefinition，因为后续操作都是以RootBeanDefinition操作的
 				mbd = getMergedLocalBeanDefinition(beanName);
 			}
 			boolean synthetic = (mbd != null && mbd.isSynthetic());
