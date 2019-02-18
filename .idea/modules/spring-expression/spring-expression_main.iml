@@ -49,6 +49,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="module" module-name="spring-jcl_main" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
@@ -58,6 +59,5 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module" module-name="spring-jcl_main" />
   </component>
 </module>
