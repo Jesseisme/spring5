@@ -469,6 +469,11 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 		// clone the bean definition in case of a dynamically resolved Class
 		// which cannot be stored in the shared merged bean definition.
 		//判断需要创建的Bean是否可以实例化，即是否可以通过当前的类加载器加载
+		/**1.
+		 * 解析指定 BeanDefinition 的 class
+		 * 这个方法主要是解析 bean definition 的 class 类，并将已经解析的 Class 存储在 bean definition 中以供后面使用。
+		 * 如果解析的 class 不为空，则会将该 BeanDefinition 进行克隆至 mbdToUse，这样做的主要目的是以为动态解析的 class 是无法保存到共享的 BeanDefinition 中。
+		 */
 		Class<?> resolvedClass = resolveBeanClass(mbd, beanName);
 		if (resolvedClass != null && !mbd.hasBeanClass() && mbd.getBeanClassName() != null) {
 			mbdToUse = new RootBeanDefinition(mbd);
@@ -476,7 +481,9 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 		}
 
 		// Prepare method overrides.
-		//校验和准备Bean中的方法覆盖
+		/**2.
+		 * 处理 override 属性
+		 */
 		try {
 			mbdToUse.prepareMethodOverrides();
 		}
@@ -486,8 +493,14 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 		}
 
 		try {
+			/**3.
+			 * 实例化的前置处理
+			 * BeanPostProcessors
+			 */
 			// Give BeanPostProcessors a chance to return a proxy instead of the target bean instance.
 			//如果Bean配置了初始化前和初始化后的处理器，则试图返回一个需要创建Bean的代理对象
+			// 给 BeanPostProcessors 一个机会用来返回一个代理类而不是真正的类实例
+			// AOP 的功能就是基于这个地方
 			Object bean = resolveBeforeInstantiation(beanName, mbdToUse);
 			if (bean != null) {
 				return bean;
@@ -500,7 +513,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 
 		try {
 			//创建Bean的入口
-			/***
+			/***4.
 			 * 真正的初始化工作是由 doCreateBean() 实现
 			 */
 			Object beanInstance = doCreateBean(beanName, mbdToUse, args);
@@ -560,6 +573,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 			然后B也会运行到这段逻辑，构造函数中发现依赖A，
 			这个时候就会抛出循环依赖的异常
 			*/
+			// 使用合适的实例化策略来创建新的实例：工厂方法、构造函数自动注入、简单初始化
 			instanceWrapper = createBeanInstance(beanName, mbd, args);
 		}
 		final Object bean = instanceWrapper.getWrappedInstance();
@@ -609,6 +623,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 						"' to allow for resolving potential circular references");
 			}
 			//这里是一个匿名内部类，为了防止循环引用，尽早持有对象的引用
+			//singletonFactories一级缓存中put beanname
 			addSingletonFactory(beanName, () -> getEarlyBeanReference(beanName, mbd, bean));
 		}
 
@@ -1155,6 +1170,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 	 */
 	@Nullable
 	protected Object applyBeanPostProcessorsBeforeInstantiation(Class<?> beanClass, String beanName) {
+		//todo : BeanPostProcessor
 		for (BeanPostProcessor bp : getBeanPostProcessors()) {
 			if (bp instanceof InstantiationAwareBeanPostProcessor) {
 				InstantiationAwareBeanPostProcessor ibp = (InstantiationAwareBeanPostProcessor) bp;
@@ -1246,7 +1262,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 		}
 
 		/***
-		 * 如果缓存中没有，则需要先确定到底使用哪个构造函数来完成解析工作，因为一个类有多个构造函数，每个构造函数都有不同的构造参数，
+		 * 4.如果缓存中没有，则需要先确定到底使用哪个构造函数来完成解析工作，因为一个类有多个构造函数，每个构造函数都有不同的构造参数，
 		 * 所以需要根据参数来锁定构造函数并完成初始化，如果存在参数则使用相应的带有参数的构造函数，否则使用默认构造函数。
 		 */
 		// Candidate constructors for autowiring?
@@ -1388,7 +1404,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 	 */
 	protected BeanWrapper instantiateUsingFactoryMethod(
 			String beanName, RootBeanDefinition mbd, @Nullable Object[] explicitArgs) {
-
+		//ConstructorResolver 是构造方法或者工厂类初始化 bean 的委托类。
 		return new ConstructorResolver(this).instantiateUsingFactoryMethod(beanName, mbd, explicitArgs);
 	}
 
@@ -1849,7 +1865,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 
 		Object wrappedBean = bean;
 		if (mbd == null || !mbd.isSynthetic()) {
-			// 后处理器
+			// 处理器
 			wrappedBean = applyBeanPostProcessorsBeforeInitialization(wrappedBean, beanName);
 		}
 

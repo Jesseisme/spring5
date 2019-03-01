@@ -346,6 +346,7 @@ public abstract class AbstractAutoProxyCreator extends ProxyProcessorSupport
 		}
 
 		// Create proxy if we have advice.
+		// 返回匹配当前 bean 的所有的 advisor、advice、interceptor
 		Object[] specificInterceptors = getAdvicesAndAdvisorsForBean(bean.getClass(), beanName, null);
 		if (specificInterceptors != DO_NOT_PROXY) {
 			this.advisedBeans.put(cacheKey, Boolean.TRUE);
@@ -453,13 +454,18 @@ public abstract class AbstractAutoProxyCreator extends ProxyProcessorSupport
 
 		if (!proxyFactory.isProxyTargetClass()) {
 			if (shouldProxyTargetClass(beanClass, beanName)) {
+				//设置true  使用cglib
 				proxyFactory.setProxyTargetClass(true);
 			}
 			else {
+				//1. 有接口的，调用一次或多次：proxyFactory.addInterface(ifc);
+				// 2. 没有接口的，调用：proxyFactory.setProxyTargetClass(true);
 				evaluateProxyInterfaces(beanClass, proxyFactory);
 			}
 		}
 
+		// 这个方法会返回匹配了当前 bean 的 advisors 数组
+		// 注意：如果 specificInterceptors 中有 advice 和 interceptor，它们也会被包装成 advisor，进去看下源码就清楚了
 		Advisor[] advisors = buildAdvisors(beanName, specificInterceptors);
 		proxyFactory.addAdvisors(advisors);
 		proxyFactory.setTargetSource(targetSource);
@@ -469,7 +475,7 @@ public abstract class AbstractAutoProxyCreator extends ProxyProcessorSupport
 		if (advisorsPreFiltered()) {
 			proxyFactory.setPreFiltered(true);
 		}
-
+		//DefaultAopProxyFactory
 		return proxyFactory.getProxy(getProxyClassLoader());
 	}
 
