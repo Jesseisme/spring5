@@ -110,10 +110,13 @@ public class ReflectiveMethodInvocation implements ProxyMethodInvocation, Clonea
 			@Nullable Class<?> targetClass, List<Object> interceptorsAndDynamicMethodMatchers) {
 
 		this.proxy = proxy;
+		//真实的realSubject对象
 		this.target = target;
 		this.targetClass = targetClass;
+		//方法引用
 		this.method = BridgeMethodResolver.findBridgedMethod(method);
 		this.arguments = AopProxyUtils.adaptArgumentsIfNecessary(method, arguments);
+		//Advice拦截器链
 		this.interceptorsAndDynamicMethodMatchers = interceptorsAndDynamicMethodMatchers;
 	}
 
@@ -159,10 +162,12 @@ public class ReflectiveMethodInvocation implements ProxyMethodInvocation, Clonea
 	@Nullable
 	public Object proceed() throws Throwable {
 		//	We start with an index of -1 and increment early.
+        //没有拦截器，则直接调用Joinpoint上的method，即直接调用MethodInvocation
 		if (this.currentInterceptorIndex == this.interceptorsAndDynamicMethodMatchers.size() - 1) {
 			return invokeJoinpoint();
 		}
 
+        //取得第拦截器链上第N个拦截器
 		Object interceptorOrInterceptionAdvice =
 				this.interceptorsAndDynamicMethodMatchers.get(++this.currentInterceptorIndex);
 		if (interceptorOrInterceptionAdvice instanceof InterceptorAndDynamicMethodMatcher) {
@@ -171,7 +176,11 @@ public class ReflectiveMethodInvocation implements ProxyMethodInvocation, Clonea
 			InterceptorAndDynamicMethodMatcher dm =
 					(InterceptorAndDynamicMethodMatcher) interceptorOrInterceptionAdvice;
 			Class<?> targetClass = (this.targetClass != null ? this.targetClass : this.method.getDeclaringClass());
-			if (dm.methodMatcher.matches(this.method, targetClass, this.arguments)) {
+
+            //当前拦截器是符合拦截规则，每个拦截器可以定义是否特定的类和方法名是否符合拦截规则
+            //实际上PointCut定义的方法签名最后会转换成这个MethodMatcher，并置于拦截器中
+            if (dm.methodMatcher.matches(this.method, targetClass, this.arguments)) {
+                //符合拦截规则，调用拦截器invoke()
 				return dm.interceptor.invoke(this);
 			}
 			else {
