@@ -9,6 +9,7 @@
       <mapping pattern="2017-07-29-(三)Redis多机数据库的实现.md" type="PLAIN_TEXT" />
       <mapping pattern="20181114异常.md" type="PLAIN_TEXT" />
       <mapping pattern="innode的select为啥阻塞insert.md" type="PLAIN_TEXT" />
+      <mapping pattern="2018-12-22-Bean加载" type="PLAIN_TEXT" />
       <mapping ext="script" type="PLAIN_TEXT" />
     </extensionMap>
   </component>
