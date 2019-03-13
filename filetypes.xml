@@ -11,6 +11,7 @@
       <mapping pattern="innode的select为啥阻塞insert.md" type="PLAIN_TEXT" />
       <mapping pattern="2018-12-22-Bean加载" type="PLAIN_TEXT" />
       <mapping ext="script" type="PLAIN_TEXT" />
+      <mapping ext="proto" type="PLAIN_TEXT" />
     </extensionMap>
   </component>
 </application>
