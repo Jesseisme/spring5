@@ -3,6 +3,11 @@
     <state version="4" enabled="false" />
     <globalmarks />
     <filemarks>
+      <file name="$USER_HOME$/IdeaProjects/AppFinanceService/pom.xml" timestamp="1555668415425">
+        <mark key="[" line="307" column="30" />
+        <mark key="]" line="307" column="30" />
+        <mark key="." line="307" column="30" />
+      </file>
       <file name="$USER_HOME$/IdeaProjects/AppPivotEHRService/web/src/main/java/com/hellobike/pivot/ehr/web/controller/WorkBenchController.java" timestamp="1545100472996">
         <mark key="[" line="40" column="0" />
       </file>
@@ -56,7 +61,7 @@
         <text encoding="base64">CiAgICBwdWJsaWMgYm9vbGVhbiBmaW5kUHJldmlvdXNBc3NpZ25lZShTdHJpbmcgdGFza0lkLFN0cmluZyBwcm9jZXNzSW5zdGFuY2VJZCxTdHJpbmcgbWVtYmVySWQpIHsK</text>
       </register>
       <register name="&quot;" type="4">
-        <text>.</text>
+        <text encoding="base64">Pg==</text>
       </register>
       <register name="2" type="2">
         <text encoding="base64">Cg==</text>
@@ -87,7 +92,7 @@
         <text encoding="base64">ICAgIHB1YmxpYyB2b2lkIHNldEFwcGxpY2F0aW9uQ29udGV4dChBcHBsaWNhdGlvbkNvbnRleHQgYXBwbGljYXRpb25Db250ZXh0KSB0aHJvd3MgQmVhbnNFeGNlcHRpb24gewogICAgICAgIGlmKGFjdGl2aXRpSGlzdG9yeSA9PSBudWxsKXsKICAgICAgICAgICAgU3lzdGVtLm91dC5wcmludGxuKCJBY3Rpdml0aUhpc3Rvcnk=</text>
       </register>
       <register name="-" type="4">
-        <text>.</text>
+        <text encoding="base64">Pg==</text>
       </register>
     </registers>
     <search>
