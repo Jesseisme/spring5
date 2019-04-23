@@ -252,6 +252,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 	 * @throws BeansException
 	 */
 	//真正实现向IOC容器获取Bean的功能，也是触发依赖注入功能的地方
+	// 已经初始化过了就从容器中直接返回，否则就先初始化再返回
 	@SuppressWarnings("unchecked")
 	protected <T> T doGetBean(final String name, @Nullable final Class<T> requiredType,
 			@Nullable final Object[] args, boolean typeCheckOnly) throws BeansException {
@@ -264,6 +265,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 		 * 去除FactoryBean时的& [如果是需要获取FactoryBean自省,配置时需要在bean name前添加&]
 		 */
 		final String beanName = transformedBeanName(name);
+		// 这个是最终返回值
 		Object bean;
 
 		/***2.
@@ -277,6 +279,8 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 		Object sharedInstance = getSingleton(beanName);
 		//IOC容器创建单例模式Bean实例对象
 		//单例存在的情况下，那么beanName返回的肯定是单例类，但是这里还需要判断是不是FactoryBean
+		//  args 虽然看上去一点不重要。前面我们一路进来的时候都是 getBean(beanName)，
+		// 所以 args 传参其实是 null 的，但是如果 args 不为空的时候，那么意味着调用方不是希望获取 Bean，而是创建 Bean
 		if (sharedInstance != null && args == null) {
 			if (logger.isTraceEnabled()) {
 				//如果指定名称的Bean在容器中已有单例模式的Bean被创建
@@ -303,6 +307,12 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 		else {
 			// Fail if we're already creating this bean instance:
 			// We're assumably within a circular reference.
+			/**
+			 * 走到这里
+			 * sharedInstance != null或者 args != null
+			 * getBean(beanName)，所以 args 传参其实是 null 的，但是如果 args 不为空的时候，那么意味着调用方不是希望获取 Bean，而是创建 Bean
+			 */
+
 			//走到这里，有可能beanName是单例模式，但之前并没有实例化，或者是Prototype类型。
 			//
 			//缓存没有正在创建的单例模式Bean
@@ -366,6 +376,11 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 				markBeanAsCreated(beanName);
 			}
 
+			/*
+			 * 稍稍总结一下：
+			 * 到这里的话，要准备创建 Bean 了，对于 singleton 的 Bean 来说，容器中还没创建过此 Bean；
+			 * 对于 prototype 的 Bean 来说，本来就是要创建一个新的 Bean。
+			 */
 
 			/***
 			 * 6.
@@ -424,7 +439,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 					//这里使用了一个匿名内部类，创建Bean实例对象，并且注册给所依赖的对象
 					sharedInstance = getSingleton(beanName, () -> {
 						try {
-							//todo !!!
+							//todo  重点!!!!!!
 							return createBean(beanName, mbd, args);
 						}
 						catch (BeansException ex) {
