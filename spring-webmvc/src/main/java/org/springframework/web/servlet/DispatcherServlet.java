@@ -924,6 +924,7 @@ public class DispatcherServlet extends FrameworkServlet {
 		}
 
 		// Make framework objects available to handlers and view objects.
+		// 使得request对象能供 handler处理和view处理 使用
 		request.setAttribute(WEB_APPLICATION_CONTEXT_ATTRIBUTE, getWebApplicationContext());
 		request.setAttribute(LOCALE_RESOLVER_ATTRIBUTE, this.localeResolver);
 		request.setAttribute(THEME_RESOLVER_ATTRIBUTE, this.themeResolver);
@@ -1007,16 +1008,20 @@ public class DispatcherServlet extends FrameworkServlet {
 			Exception dispatchException = null;
 
 			try {
+				// 1. 检查是否是上传文件
 				processedRequest = checkMultipart(request);
 				multipartRequestParsed = (processedRequest != request);
 
 				// Determine handler for the current request.
+				// 2. 获取handler处理器，返回的mappedHandler封装了handlers和interceptors
 				mappedHandler = getHandler(processedRequest);
 				if (mappedHandler == null) {
+					// 返回404
 					noHandlerFound(processedRequest, response);
 					return;
 				}
 
+				//找到符合的适配器
 				// Determine handler adapter for the current request.
 				HandlerAdapter ha = getHandlerAdapter(mappedHandler.getHandler());
 
@@ -1034,6 +1039,7 @@ public class DispatcherServlet extends FrameworkServlet {
 					return;
 				}
 
+				// 4. 实际的处理器处理并返回 ModelAndView 对象
 				// Actually invoke the handler.
 				mv = ha.handle(processedRequest, response, mappedHandler.getHandler());
 

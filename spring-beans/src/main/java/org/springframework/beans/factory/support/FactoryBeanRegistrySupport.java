@@ -140,7 +140,9 @@ public abstract class FactoryBeanRegistrySupport extends DefaultSingletonBeanReg
 								// Temporarily return non-post-processed object, not storing it yet..
 								return object;
 							}
-							//加入正在创建缓存
+							/**
+							 *  加入正在创建缓存  是解决循环依赖的基础
+							 */
 							beforeSingletonCreation(beanName);
 							try {
 								// 对从 FactoryBean 获取的对象进行后处理

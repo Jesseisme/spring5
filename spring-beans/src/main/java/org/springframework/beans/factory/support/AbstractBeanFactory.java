@@ -308,16 +308,11 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 			// Fail if we're already creating this bean instance:
 			// We're assumably within a circular reference.
 			/**
-			 * 走到这里
+			 * 走到这里   有可能beanName是单例模式，但之前并没有实例化，缓存没有正在创建的单例模式Bean 或者是Prototype类型。
 			 * sharedInstance != null或者 args != null
 			 * getBean(beanName)，所以 args 传参其实是 null 的，但是如果 args 不为空的时候，那么意味着调用方不是希望获取 Bean，而是创建 Bean
 			 */
 
-			//走到这里，有可能beanName是单例模式，但之前并没有实例化，或者是Prototype类型。
-			//
-			//缓存没有正在创建的单例模式Bean
-
-			//
 			/***
 			 * 3.原型依赖直接异常处理
 			 * 判断原型场景的循环依赖问题,如果是原型同时bean又正在创建,说明是循环依赖,那直接抛异常,spring不尝试解决原型的循环依赖
@@ -391,7 +386,6 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 			 * 注册依赖的bean
 			 * 递归调用getBean实例化依赖bean
 			 */
-			//-----
 			try {
 				//根据指定Bean名称获取其父级的Bean定义
 				//主要解决Bean继承时子类合并父类公共属性问题
@@ -1798,7 +1792,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 		if (!(beanInstance instanceof FactoryBean) || BeanFactoryUtils.isFactoryDereference(name)) {
 			return beanInstance;
 		}
-		//如果 BeanDefinition 为空，则从 factoryBeanObjectCache 中加载，
+		// 如果 BeanDefinition 为空，则从 factoryBeanObjectCache 中加载，
 		// 如果还是空，则可以断定 beanInstance 一定是 FactoryBean 类型，则委托 getObjectFromFactoryBean() 方法处理
 		Object object = null;
 		if (mbd == null) {

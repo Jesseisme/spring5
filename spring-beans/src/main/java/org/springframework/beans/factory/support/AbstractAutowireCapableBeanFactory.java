@@ -629,7 +629,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 						"' to allow for resolving potential circular references");
 			}
 			//这里是一个匿名内部类，为了防止循环引用，尽早持有对象的引用
-			//singletonFactories一级缓存中put beanname
+			//singletonFactories一级缓存中put beanName
 			//todo 加入缓存中 处理循环依赖的情况
 			addSingletonFactory(beanName, () -> getEarlyBeanReference(beanName, mbd, bean));
 		}
