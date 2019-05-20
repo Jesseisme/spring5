@@ -1,6 +1,7 @@
 <application>
   <component name="FileTypeManager" version="17">
     <extensionMap>
+      <mapping pattern="test" type="PLAIN_TEXT" />
       <mapping pattern="redis笔记1.md" type="PLAIN_TEXT" />
       <mapping pattern="CNAME" type="PLAIN_TEXT" />
       <mapping pattern="innodb高并发.md" type="PLAIN_TEXT" />
