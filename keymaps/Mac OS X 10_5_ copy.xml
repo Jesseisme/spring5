@@ -18,4 +18,8 @@
   <action id="SelectInProjectView">
     <keyboard-shortcut first-keystroke="meta f4" />
   </action>
+  <action id="VimPluginToggle">
+    <keyboard-shortcut first-keystroke="meta alt v" />
+    <keyboard-shortcut first-keystroke="meta alt back_slash" />
+  </action>
 </keymap>
