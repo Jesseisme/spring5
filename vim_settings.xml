@@ -48,6 +48,12 @@
         <mark key="]" line="47" column="0" />
         <mark key="." line="47" column="0" />
       </file>
+      <file name="$USER_HOME$/IdeaProjects/AppFinanceService/service-order/src/main/java/com/hellobike/finance/order/model/vo/LoanReceiptVO.java" timestamp="1562670821009">
+        <mark key="[" line="39" column="4" />
+        <mark key="]" line="42" column="3" />
+        <mark key="^" line="42" column="3" />
+        <mark key="." line="42" column="3" />
+      </file>
       <file name="$USER_HOME$/IdeaProjects/AppPivotEHRService/util/src/main/java/com/hellobike/pivot/ehr/util/TokenUtils.java" timestamp="1545100447556">
         <mark key="[" line="10" column="0" />
       </file>
@@ -61,7 +67,7 @@
         <text encoding="base64">CiAgICBwdWJsaWMgYm9vbGVhbiBmaW5kUHJldmlvdXNBc3NpZ25lZShTdHJpbmcgdGFza0lkLFN0cmluZyBwcm9jZXNzSW5zdGFuY2VJZCxTdHJpbmcgbWVtYmVySWQpIHsK</text>
       </register>
       <register name="&quot;" type="4">
-        <text encoding="base64">Pg==</text>
+        <text encoding="base64">IA==</text>
       </register>
       <register name="2" type="2">
         <text encoding="base64">Cg==</text>
@@ -92,7 +98,7 @@
         <text encoding="base64">ICAgIHB1YmxpYyB2b2lkIHNldEFwcGxpY2F0aW9uQ29udGV4dChBcHBsaWNhdGlvbkNvbnRleHQgYXBwbGljYXRpb25Db250ZXh0KSB0aHJvd3MgQmVhbnNFeGNlcHRpb24gewogICAgICAgIGlmKGFjdGl2aXRpSGlzdG9yeSA9PSBudWxsKXsKICAgICAgICAgICAgU3lzdGVtLm91dC5wcmludGxuKCJBY3Rpdml0aUhpc3Rvcnk=</text>
       </register>
       <register name="-" type="4">
-        <text encoding="base64">Pg==</text>
+        <text encoding="base64">IA==</text>
       </register>
     </registers>
     <search>
