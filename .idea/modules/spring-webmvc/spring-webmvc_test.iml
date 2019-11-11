@@ -269,4 +269,8 @@
     </orderEntry>
   </component>
   <component name="TestModuleProperties" production-module="spring-webmvc_main" />
+  <component name="sonarModuleSettings">
+    <option name="localAnalysisScripName" value="&lt;PROJECT&gt;" />
+    <option name="serverName" value="&lt;PROJECT&gt;" />
+  </component>
 </module>
