@@ -26,6 +26,14 @@
           <option name="url" value="ssh://git@gitlab.hellobike.cn:10022/Plouto/AppFinanceCommonService.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="http://gitlab.hellobike.cn/Plouto/AppFinanceMessageService.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="ssh://git@gitlab.hellobike.cn:10022/Plouto/AppFinanceMessageService.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
     <option name="cloneParentDir" value="$USER_HOME$/IdeaProjects" />
